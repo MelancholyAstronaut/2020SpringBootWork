@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>电子书城</title>
+    <link rel="stylesheet" href="/client/css/main.css" type="text/css"/>
+</head>
+<body class="main">
+<div th:insert="~{client/head.html}"></div>
+<div th:insert="~{client/menu_search.html}"></div>
+
+<div id="divcontent">
+    <form th:action="@{/user/login}" method="post">
+        <table width="900px" border="0" cellspacing="0">
+            <tr>
+                <td style="padding:30px">
+                    <div style="height:470px">
+                        <b>&nbsp;&nbsp;首页&nbsp;&raquo;&nbsp;个人用户登录</b>
+                        <div>
+                            <table width="85%" border="0" cellspacing="0">
+                                <tr>
+                                    <td>
+                                        <div id="logindiv">
+                                            <table width="100%" border="0" cellspacing="0">
+                                                <tr>
+                                                    <td style="text-align:center; padding-top:20px">
+                                                        <img src="/client/images/logintitle.gif" width="150"
+                                                             height="30"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;padding-top:20px;">
+                                                        <span style="color: #FF0000"
+                                                              th:text="${message?.toString()}"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center">
+                                                        <table width="80%" border="0" cellspacing="0"
+                                                               style="margin-top:15px ;margin-left:auto; margin-right:auto">
+                                                            <tr>
+                                                                <td
+                                                                        style="text-align:right; padding-top:5px; width:25%">
+                                                                    用户名：
+                                                                </td>
+                                                                <td style="text-align:left">
+                                                                    <input name="username" id="username"
+                                                                           type="text"
+                                                                           class="textinput"/>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align:right; padding-top:5px">密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+                                                                <td style="text-align:left"><input name="password"
+                                                                                                   type="password"
+                                                                                                   class="textinput"
+                                                                                                   id="password"/>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align:center"><input
+                                                                        type="checkbox" name="remember"
+                                                                        value="1" id="remember"/>
+                                                                    记住用户名&nbsp;&nbsp; <input type="checkbox"
+                                                                                             name="auto_login"
+                                                                                             value="1" id="auto_login"
+                                                                                             onclick="auto_login1()"/>
+                                                                    自动登录
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"
+                                                                    style="padding-top:10px; text-align:center">
+                                                                    <input name="image" type="image"
+                                                                           onclick="return formcheck()"
+                                                                           src="/client/images/loginbutton.gif"
+                                                                           width="83" height="22"/>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td colspan="2" style="padding-top:10px">
+                                                                    <img src="/client/images/loginline.gif" width="241"
+                                                                         height="10"/>
+                                                                </td>
+                                                            </tr>
+                                                            <!-- <tr>
+                                                                <td colspan="2"
+                                                                    style="padding-top:10px; text-align:center"><a
+                                                                    href="register.jsp"><img name="image"
+                                                                        src="images/signupbutton.gif" width="135" height="33" />
+                                                                </a></td>
+                                                            </tr> -->
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                    <td style="text-align:left; padding-top:30px; width:60%"><h1>您还没有注册？</h1>
+                                        <p>注册新会员，享受更优惠价格!</p>
+                                        <p>千种图书，供你挑选！注册即享受丰富折扣和优惠，便宜有好货！超过万本图书任您选。</p>
+                                        <p>超人气社区！精彩活动每一天。买卖更安心！支付宝交易超安全。</p>
+                                        <p style="text-align:left">
+                                            <a th:href="@{/page/goRegister}">
+                                                <img src="/client/images/signupbutton.gif" width="135" height="33"/>
+                                            </a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<!--<%@ include file="foot.jsp" %>-->
+<div th:insert="~{client/foot}"></div>
+</body>
+<script th:inline="javascript">
+    var a = document.getElementById("username");
+    var b = document.getElementById("password");
+    var cookies = document.cookie.split(";")
+
+    for (var i = 0; i < cookies.length; i++) {
+        var temp = cookies[i].split("=");
+        // console.log(temp[0])
+        if (temp[0].indexOf("bookstore_name") !==-1) {
+            a.value = temp[1];
+        } else if (temp[0].indexOf("bookstore_password") !==-1) {
+            b.value = temp[1];
+        }
+    }
+
+    //如果勾选了自动登录,则默认勾记住住用户名
+    function auto_login1() {
+        var auto_login = document.getElementById("auto_login");
+        var remember = document.getElementById("remember");
+        if (auto_login.checked) {
+            remember.checked = true;
+        }
+    }
+</script>
+
+</html>

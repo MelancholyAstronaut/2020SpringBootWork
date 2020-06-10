@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>bookStore列表</title>
+    <meta charset="UTF-8">
+    <!--<%&#45;&#45;导入css &#45;&#45;%>-->
+    <link rel="stylesheet" href="/client/css/main.css" type="text/css"/>
+</head>
+<body class="main">
+<div th:insert="~{client/head.html}"></div>
+<div th:insert="~{client/menu_search.html}"></div>
+<div id="divpagecontent">
+    <table width="100%" border="0" cellspacing="0">
+        <tr>
+            <td>
+                <div style="text-align:right; margin:5px 10px 5px 0px">
+                    <a href="/page/goback">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span th:text="${name}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;图书列表
+                </div>
+                <table cellspacing="0" class="listcontent">
+                    <tr>
+                        <td>
+                            <h1>商品目录</h1>
+                            <hr/>
+                            <h1 th:text="${name}"></h1>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span th:text="'共' + ${page.getTotal()} + '种商品'"></span>
+
+                            <hr/>
+                            <div style="margin-top:20px; margin-bottom:5px">
+                                <img src="/client/images/productlist.gif" width="100%" height="38"/>
+                            </div>
+
+                            <table cellspacing="0" class="booklist">
+                                <tr>
+                                    <td th:each="p:${list}">
+                                        <div class="divbookpic">
+                                            <p>
+                                                <a th:href="@{/client/product/findProductById/(id=${p.id})}">
+                                                    <img th:src="${p.imgurl}" width="115" height="129" border="0"/>
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="divlisttitle">
+                                            <a th:href="@{/client/product/findProductById(id=${p.id})}">书名： [[${p.name}]]<br/>售价：￥[[${p.price}]]
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- <table cellspacing="0" class="booklist">
+                                <tr>
+                                </tr>
+                            </table> -->
+
+                            <div class="pagination">
+                                <span th:text="'当前是' + ${page.pageNum}+'/'+${page.pages} + '页'"></span>
+                                <ul>
+                                    <li class="nextpage">
+                                        <a th:href="@{/client/product/findProductByCategory(Category=${name},pageIndex=${page.getNavigateFirstPage()})}">首页</a>
+                                    </li>
+                                    <li class="nextpage">
+                                        <a th:href="@{/client/product/findProductByCategory(Category=${name},pageIndex=${page.getPrePage()})}">上一页</a>
+                                    </li>
+                                    <li class="nextpage">
+                                        <a th:href="@{/client/product/findProductByCategory(Category=${name},pageIndex=${page.getNextPage()})}">下一页</a>
+                                    </li>
+                                    <li class="nextpage">
+                                        <a th:href="@{/client/product/findProductByCategory(Category=${name},pageIndex=${page.getNavigateLastPage()})}">尾页</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<div th:insert="~{client/foot}"></div>
+</body>
+</html>

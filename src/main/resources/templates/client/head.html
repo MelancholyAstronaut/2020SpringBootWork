@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:id="divhead">
+    <table cellspacing="0" class="headtable">
+        <tr>
+            <td>
+                <a href="../index.html">
+                    <img src="/client/images/logo.png" width="200" height="60" border="0"/>
+                </a>
+            </td>
+            <td style="text-align:right">
+                <img src="/client/images/cart.gif" width="26" height="23" style="margin-bottom:-4px"/>&nbsp;<a
+                    th:href="@{/page/cart}">购物车</a>
+                | <a href="#">帮助中心</a>
+                | <a th:href="@{/user/myAccount}">我的帐户</a>
+                | <a th:href="@{/page/goRegister}">新用户注册</a>
+                <br><br><br>
+                <!--/*@thymesVar id="username" type="edu.aynu.qiuhaojie.commons.beans.User"*/-->
+                <span th:text=" '欢迎你 ' + ${#strings.isEmpty(#session?.getAttribute('login_user'))?'':#session.getAttribute('login_user').username}"></span>
+            </td>
+        </tr>
+    </table>
+</div>

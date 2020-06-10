@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.aynu.qiuhaojie.client.order.dao.OrdersDao">
+    <insert id="insertOrderiItem">
+        insert into orderitem (order_id, product_id, buynum)
+        values (#{order.id}, #{product.id}, #{buynum})
+    </insert>
+    <update id="insertOrder">
+        insert into orders (id, money, receiverAddress, receiverName, receiverPhone, paystate, ordertime, user_id)
+        values (#{id}, #{money}, #{receiverAddress},
+                #{receiverName}, #{receiverPhone}, #{paystate}, #{ordertime}, #{user.id})
+    </update>
+    <update id="updateProductNum">
+        update products
+        set pnum = pnum - #{buynum}
+        where id = #{product.id}
+    </update>
+    <update id="updatePayState">
+        update orders
+        set paystate = 1
+        where id = #{id}
+    </update>
+</mapper>

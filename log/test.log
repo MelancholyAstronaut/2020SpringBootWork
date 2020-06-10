@@ -1,0 +1,11 @@
+15:15 [restartedMain] INFO  edu.aynu.qiuhaojie.QiuhaojieApplication - Starting QiuhaojieApplication on X6 with PID 15220 (C:\Users\qiu\Desktop\qiuhaojie\target\classes started by qiu in C:\Users\qiu\Desktop\qiuhaojie)
+15:15 [restartedMain] INFO  edu.aynu.qiuhaojie.QiuhaojieApplication - No active profile set, falling back to default profiles: default
+15:15 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+15:15 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+15:15 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+15:15 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:15 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+15:15 [restartedMain] INFO  edu.aynu.qiuhaojie.QiuhaojieApplication - Started QiuhaojieApplication in 5.393 seconds (JVM running for 7.219)
+15:15 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:15 [http-nio-8080-exec-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:15 [http-nio-8080-exec-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.

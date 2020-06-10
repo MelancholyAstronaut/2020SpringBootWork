@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.aynu.qiuhaojie.client.user.dao.UserDao">
+    <insert id="insertUser" parameterType="user">
+        insert into user(username, password, gender, email, telephone, introduce)
+        values (#{username}, #{password}, #{gender}, #{email}, #{telephone}, #{introduce})
+    </insert>
+    <update id="activeUser">
+        update user
+        set state = 1
+        where activeCode = #{code}
+    </update>
+    <select id="selectUserById" resultType="user">
+        select * from user  where id =#{user_id}
+    </select>
+    <resultMap id="orderMap" type="order">
+        <id column="id" property="id"/>
+        <result column="money" property="money"/>
+
+        <association property="user"
+                     javaType="user"
+                     select="selectUserById"
+                     column="user_id"/>
+    </resultMap>
+    <select id="findOrderById" resultMap="orderMap">
+        select * from orders where  user_id = #{id}
+    </select>
+</mapper>

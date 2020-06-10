@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>电子书城</title>
+    <link rel="stylesheet" href="/client/css/main.css" type="text/css"/>
+</head>
+<body class="main">
+<div th:insert="~{client/head.html}"></div>
+<div th:insert="~{client/menu_search.html}"></div>
+<div id="divpagecontent">
+    <table width="100%" border="0" cellspacing="0">
+        <tr>
+            <td width="25%">
+                <table width="100%" border="0" cellspacing="0" style="margin-top:30px">
+                    <tr>
+                        <td class="listtitle">我的帐户</td>
+                    </tr>
+                    <tr>
+                        <td class="listtd">
+                            <img src="/client/images/miniicon.gif" width="9"
+                                 height="6"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/page/modifyuserinfo">用户信息修改</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="listtd">
+                            <img src="/client/images/miniicon.gif" width="9"
+                                 height="6"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/user/findOrderByUser">订单查询</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="listtd">
+                            <img src="/client/images/miniicon.gif" width="9"
+                                 height="6"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{/user/logout}">用戶退出</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <div style="text-align:right; margin:5px 10px 5px 0px">
+                    <a href="/page/goback">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;
+                    &nbsp;我的帐户&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;欢迎
+                </div>
+                <table cellspacing="0" class="infocontent">
+                    <tr>
+                        <td style="padding:20px"><p>
+                            <img src="/client/ad/myad.jpg" width="631" height="436"/>
+                        </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--<%@ include file="foot.jsp" %>-->
+<div th:insert="~{client/foot}"></div>
+</body>
+</html>

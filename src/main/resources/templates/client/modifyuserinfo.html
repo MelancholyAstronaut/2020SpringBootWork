@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>电子书城</title>
+    <link rel="stylesheet" href="/client/css/main.css" type="text/css"/>
+    <script type="text/javascript" src="/client/js/form.js"></script>
+</head>
+<div th:insert="~{/client/head.html}"></div>
+<div th:insert="~{/client/menu_search.html}"></div>
+<body class="main">
+<div id="divpagecontent">
+    <form th:action="@{/user/modify_user}">
+        <table width="100%" border="0" cellspacing="0">
+            <tr>
+                <td width="25%">
+                    <table width="100%" border="0" cellspacing="0"
+                           style="margin-top:30px">
+                        <tr>
+                            <td class="listtitle">我的帐户</td>
+                        </tr>
+                        <tr>
+                            <td class="listtd">
+                                <img src="/client/images/miniicon.gif" width="9" height="6"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/page/modifyuserinfo">用户信息修改</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="listtd">
+                                <img src="/client/images/miniicon.gif" width="9" height="6"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/user/findOrderByUser">订单查询</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="listtd">
+                                <img src="/client/images/miniicon.gif" width="9" height="6"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a th:href="@{/user/logout}">用戶退出</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <div style="text-align:right; margin:5px 10px 5px 0px">
+                        <a href="/page/goback">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;
+                        <a href="/page/modifyuserinfo">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;用户信息修改
+                    </div>
+                    <table cellspacing="0" class="infocontent">
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="2" class="upline">
+                                    <tr>
+                                        <td style="text-align:right; width:20%">会员邮箱：</td>
+                                        <td style="width:40%; padding-left:20px"
+                                            th:text="${session.login_user.email}"></td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right">会员名：</td>
+                                        <td style="padding-left:20px" th:text="${session.login_user.username}"></td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right">修改密码：</td>
+                                        <td><input type="password" class="textinput" name="password" id="password"
+                                                   onkeyup="checkPassword()"/>
+                                        </td>
+                                        <td><span id="passwordMsg" color="#999999">密码设置至少6位，请区分大小写</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right">重复密码：</td>
+                                        <td>
+                                            <input type="password" class="textinput" id="repassword" name="repassword"
+                                                   onkeyup="checkConfirm();"/>
+                                        </td>
+                                        <td><span id="confirmMsg"></span>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right">性别：</td>
+                                        <td colspan="2">&nbsp;&nbsp;
+                                            <input type="radio" name="gender" value="男" id="male"/> 男
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="gender" value="女" id="female"/> 女
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right">联系方式：</td>
+                                        <td colspan="2">
+                                            <input name="telephone" type="text"
+                                                   th:value="${session.login_user.telephone}"
+                                                   class="textinput"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right">&nbsp;</td>
+                                        <td th:value="${message}">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <p style="text-align:center">
+                                    <input type="image" src="/client/images/botton_gif_025.gif" boder="0">
+                                </p>
+                                <p style="text-align:center">&nbsp;</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>
+<div th:insert="~{client/foot}"></div>
+</body>
+
+<script th:inline="javascript">
+    var temp;
+    var a = [[${session.login_user.gender}]]
+    if (a === "男") {
+        temp = document.getElementById("male");
+        temp.checked = true;
+    } else {
+        temp = document.getElementById("female");
+        temp.checked = true;
+    }
+</script>
+</html>
